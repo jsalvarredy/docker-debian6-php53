@@ -35,6 +35,14 @@ echo ' \
 
 DocumentRoot /var/www' >> /etc/apache2/apache2.conf
 
+#Para que se vean en los logs la IP origen
+if [ ! -z "$IP_NGINXPROXY" ]; then
+	sed -i "s/127.0.0.1/$IP_NGINXPROXY/g" /etc/apache2/mods-available/rpaf.conf
+else
+	sed -i "s/127.0.0.1/172.17.0.1/g" /etc/apache2/mods-available/rpaf.conf
+fi
+
+
 a2enmod rewrite
 a2dissite default
 apache2 -DFOREGROUND
