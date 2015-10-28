@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y --force-yes locales  libapache2-mod-rpaf apache2 apache2-mpm-prefork \
 	libapache2-mod-php5 php5 php-apc php5-cli php5-common php5-curl php5-gd php5-imagick php5-intl \
-	php5-mcrypt php5-mysql php5-xmlrpc php5-xsl php5-suhosin php5-memcache php5-tidy php5-xsl 
+	php5-mcrypt php5-mysql php5-xmlrpc php-db php5-xsl php5-suhosin php5-memcache php5-tidy php5-xsl 
 
 RUN apt-get install -y --force-yes postfix mailutils rsyslog
 
