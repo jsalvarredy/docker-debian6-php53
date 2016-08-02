@@ -32,6 +32,13 @@ RUN apt-get -y autoremove && \
 RUN sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ America\/Argentina\/Buenos_Aires/g' /etc/php5/cli/php.ini && \
 	sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ America\/Argentina\/Buenos_Aires/g' /etc/php5/apache2/php.ini
 
+# Let's set the upload_max_file
+RUN sed -i 's/upload_max_filesize\ =\ 2M/upload_max_filesize\ =\ 100M/g' /etc/php5/apache2/php.ini
+
+# Let's set the post_max_size
+RUN  sed -i 's/post_max_size\ =\ 8M/post_max_size\ =\ 100M/g' /etc/php5/apache2/php.ini
+
+
 WORKDIR /var/www
 VOLUME ["/var/www"]
 
